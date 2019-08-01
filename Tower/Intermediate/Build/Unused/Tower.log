@@ -1,0 +1,15 @@
+﻿  Creating makefile for TowerEditor (source directory changed)
+  Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Parsing headers for TowerEditor
+    Running UnrealHeaderTool "D:\Unreal\Tower\Tower\Tower.uproject" "D:\Unreal\Tower\Tower\Intermediate\Build\Win64\TowerEditor\Development\TowerEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+  Reflection code generated for TowerEditor in 9.6604207 seconds
+  Building 5 actions with 4 processes...
+    [1/5] Tower.init.gen.cpp
+    [2/5] BasicTower.cpp
+    [3/5] BasicTower.gen.cpp
+    [4/5] UE4Editor-Tower.lib
+       Creating library D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\UE4Editor-Tower.lib and object D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\UE4Editor-Tower.exp
+    [5/5] UE4Editor-Tower.dll
+       Creating library D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\UE4Editor-Tower.suppressed.lib and object D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\UE4Editor-Tower.suppressed.exp
+  Deploying TowerEditor Win64 Development...
+  Total build time: 17.14 seconds (Parallel executor: 1.79 seconds)
