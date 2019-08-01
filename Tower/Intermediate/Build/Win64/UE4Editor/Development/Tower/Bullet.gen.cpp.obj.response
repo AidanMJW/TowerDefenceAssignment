@@ -412,20 +412,20 @@
 /I ThirdParty
 /I ThirdParty\libSampleRate\Public
 /I ThirdParty\libSampleRate
-/I D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Inc\Tower
-/I D:\Unreal\Tower\Tower\Source
-/I D:\Unreal\Tower\Tower\Source\Tower
+/I D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\UE4Editor\Inc\Tower
+/I D:\GitHub\TowerDefence\TowerDefence\Tower\Source
+/I D:\GitHub\TowerDefence\TowerDefence\Tower\Source\Tower
 /I "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\INCLUDE"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\ucrt"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.16299.0\winrt"
-/FI"D:\Unreal\Tower\Tower\Intermediate\Build\Win64\TowerEditor\Development\Engine\SharedPCH.Engine.h"
-/Yu"D:\Unreal\Tower\Tower\Intermediate\Build\Win64\TowerEditor\Development\Engine\SharedPCH.Engine.h"
-/Fp"D:\Unreal\Tower\Tower\Intermediate\Build\Win64\TowerEditor\Development\Engine\SharedPCH.Engine.h.pch"
-"D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Inc\Tower\Bullet.gen.cpp"
-/FI"D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\Definitions.Tower.h"
-/Fo"D:\Unreal\Tower\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\Bullet.gen.cpp.obj"
+/FI"D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\TowerEditor\Development\Engine\SharedPCH.Engine.h"
+/Yu"D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\TowerEditor\Development\Engine\SharedPCH.Engine.h"
+/Fp"D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\TowerEditor\Development\Engine\SharedPCH.Engine.h.pch"
+"D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\UE4Editor\Inc\Tower\Bullet.gen.cpp"
+/FI"D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\Definitions.Tower.h"
+/Fo"D:\GitHub\TowerDefence\TowerDefence\Tower\Intermediate\Build\Win64\UE4Editor\Development\Tower\Bullet.gen.cpp.obj"
 /TP
 /GR-
 /W4
