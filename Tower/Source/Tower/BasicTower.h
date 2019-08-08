@@ -28,9 +28,7 @@ protected:
 
 	void fireCooldown(float deltaTime);
 
-	void getEnemy();
-
-	
+	void getEnemy();	
 
 public:	
 	// Called every frame

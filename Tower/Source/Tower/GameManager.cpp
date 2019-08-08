@@ -14,6 +14,7 @@ AGameManager::AGameManager()
 void AGameManager::BeginPlay()
 {
 	Super::BeginPlay();
+	setupBulletPool();
 	
 }
 
@@ -23,4 +24,43 @@ void AGameManager::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+void AGameManager::setupBulletPool()
+{
+	for (int bullets = 0; bullets < amountOfBullets; bullets++)
+	{
+		//if has reference to the bullet
+		if (theBullet )
+		{
+			UWorld* world = GetWorld();
+
+			//if has reference to the world
+			if (world)
+			{
+				FActorSpawnParameters spawnParam;
+				spawnParam.Owner = this;
+				FRotator rotator;
+
+				//spawns bullet and assigns reference to it
+				ABullet* b = world->SpawnActor<ABullet>(theBullet, bulletPoolLocation, rotator, spawnParam);
+
+				bulletPool.Add(b);
+			}
+		}
+	}
+}
+
+ABullet* AGameManager::getBullet()
+{
+	ABullet* theBullet;
+
+	theBullet = bulletPool[bulletIndex];
+
+	bulletIndex++;
+	if (bulletIndex >= bulletPool.Num())
+		bulletIndex = 0;
+
+	return theBullet;
+}
+
 

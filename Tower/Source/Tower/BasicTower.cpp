@@ -49,26 +49,24 @@ void ABasicTower::Tick(float DeltaTime)
 void ABasicTower::fireBullets()
 {
 	//if has reference to the bullet and enemy
-	if (theBullet && enemy)
+	if (enemy)
 	{
 		UWorld* world = GetWorld();
 	    
 		//if has reference to the world
 		if (world)
 		{
-			FActorSpawnParameters spawnParam;
-			spawnParam.Owner = this;
-			FRotator rotator;
-
 			//get tower location for bullet spawn location (may change to turret barrel hole location)
 			FVector pos = GetActorLocation();
 
 			//spawns bullet and assigns reference to it
-			ABullet* b = world->SpawnActor<ABullet>(theBullet, pos, rotator, spawnParam);
+			ABullet* b = gameManager->getBullet();
+
+			b->SetActorLocation(pos);
 
 			//get direction of the target enemy from tower, to pass to bullet
 			FVector enemyDirection = (GetActorLocation() - enemyLocation).GetSafeNormal();
-			b->direction = -enemyDirection;
+			b->fire(-enemyDirection,GetActorLocation());
 		}
 	}
 }

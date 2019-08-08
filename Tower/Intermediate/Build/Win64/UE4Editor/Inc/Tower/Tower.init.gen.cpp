@@ -19,7 +19,7 @@ void EmptyLinkFunctionForGeneratedCodeTower_init() {}
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/Tower",
 				PKG_CompiledIn | 0x00000000,
-				0xFE4EBB6F,
+				0xCFA2F26D,
 				0xF59FF208,
 				nullptr, 0,
 				METADATA_PARAMS(nullptr, 0)

@@ -11,6 +11,8 @@ ABullet::ABullet()
 	body = CreateDefaultSubobject<UStaticMeshComponent>("body");
 	body->SetupAttachment(RootComponent);
 
+	isActive = false;
+	poolLocation = GetActorLocation();
 
 }
 
@@ -18,21 +20,44 @@ ABullet::ABullet()
 void ABullet::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	activeSpeed = speed;	
 }
 
 // Called every frame
 void ABullet::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if(isActive == true)
 	move();
 
+	distanceCheck();
 }
 
 void ABullet::move()
 {
 	FVector pos = GetActorLocation();
-	SetActorRelativeLocation((direction * speed) + pos);
-	
+	SetActorRelativeLocation((direction * speed) + pos);	
+}
+
+void ABullet::distanceCheck()
+{
+	if (FVector::Dist(GetActorLocation(), fireOrigin) > fireDistance)
+		resetToPool();
+}
+
+void ABullet::resetToPool()
+{
+	isActive = false;
+	speed = 0;
+	SetActorLocation(poolLocation);
+}
+
+void ABullet::fire(FVector _direction, FVector _origin)
+{
+	direction = _direction;
+	fireOrigin = _origin;
+	speed = activeSpeed;
+	isActive = true;
 }
 

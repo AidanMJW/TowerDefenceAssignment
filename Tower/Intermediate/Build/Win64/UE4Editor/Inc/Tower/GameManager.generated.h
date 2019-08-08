@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define TOWER_GameManager_generated_h
 
-#define Tower_Source_Tower_GameManager_h_13_RPC_WRAPPERS
-#define Tower_Source_Tower_GameManager_h_13_RPC_WRAPPERS_NO_PURE_DECLS
-#define Tower_Source_Tower_GameManager_h_13_INCLASS_NO_PURE_DECLS \
+#define Tower_Source_Tower_GameManager_h_14_RPC_WRAPPERS
+#define Tower_Source_Tower_GameManager_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define Tower_Source_Tower_GameManager_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGameManager(); \
 	friend struct Z_Construct_UClass_AGameManager_Statics; \
@@ -24,7 +24,7 @@ public: \
 	DECLARE_SERIALIZER(AGameManager)
 
 
-#define Tower_Source_Tower_GameManager_h_13_INCLASS \
+#define Tower_Source_Tower_GameManager_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAGameManager(); \
 	friend struct Z_Construct_UClass_AGameManager_Statics; \
@@ -33,7 +33,7 @@ public: \
 	DECLARE_SERIALIZER(AGameManager)
 
 
-#define Tower_Source_Tower_GameManager_h_13_STANDARD_CONSTRUCTORS \
+#define Tower_Source_Tower_GameManager_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AGameManager(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AGameManager) \
@@ -46,7 +46,7 @@ private: \
 public:
 
 
-#define Tower_Source_Tower_GameManager_h_13_ENHANCED_CONSTRUCTORS \
+#define Tower_Source_Tower_GameManager_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AGameManager(AGameManager&&); \
@@ -57,26 +57,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AGameManager); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AGameManager)
 
 
-#define Tower_Source_Tower_GameManager_h_13_PRIVATE_PROPERTY_OFFSET
-#define Tower_Source_Tower_GameManager_h_10_PROLOG
-#define Tower_Source_Tower_GameManager_h_13_GENERATED_BODY_LEGACY \
+#define Tower_Source_Tower_GameManager_h_14_PRIVATE_PROPERTY_OFFSET
+#define Tower_Source_Tower_GameManager_h_11_PROLOG
+#define Tower_Source_Tower_GameManager_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Tower_Source_Tower_GameManager_h_13_PRIVATE_PROPERTY_OFFSET \
-	Tower_Source_Tower_GameManager_h_13_RPC_WRAPPERS \
-	Tower_Source_Tower_GameManager_h_13_INCLASS \
-	Tower_Source_Tower_GameManager_h_13_STANDARD_CONSTRUCTORS \
+	Tower_Source_Tower_GameManager_h_14_PRIVATE_PROPERTY_OFFSET \
+	Tower_Source_Tower_GameManager_h_14_RPC_WRAPPERS \
+	Tower_Source_Tower_GameManager_h_14_INCLASS \
+	Tower_Source_Tower_GameManager_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Tower_Source_Tower_GameManager_h_13_GENERATED_BODY \
+#define Tower_Source_Tower_GameManager_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Tower_Source_Tower_GameManager_h_13_PRIVATE_PROPERTY_OFFSET \
-	Tower_Source_Tower_GameManager_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	Tower_Source_Tower_GameManager_h_13_INCLASS_NO_PURE_DECLS \
-	Tower_Source_Tower_GameManager_h_13_ENHANCED_CONSTRUCTORS \
+	Tower_Source_Tower_GameManager_h_14_PRIVATE_PROPERTY_OFFSET \
+	Tower_Source_Tower_GameManager_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	Tower_Source_Tower_GameManager_h_14_INCLASS_NO_PURE_DECLS \
+	Tower_Source_Tower_GameManager_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

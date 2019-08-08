@@ -22,13 +22,26 @@ protected:
 	virtual void BeginPlay() override;
 
 	void move();
+	void distanceCheck();
+	
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void fire(FVector _direction,FVector _origin);
+	void resetToPool();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* body;
+
+	bool isActive;
+
+	FVector poolLocation;
+	FVector fireOrigin;
+
+	UPROPERTY(EditAnywhere)
+		float fireDistance;
 
 	float damage;
 
@@ -36,6 +49,10 @@ public:
 	float speed;
 
 	UPROPERTY(EditAnywhere)
+	float activeSpeed;
+
+	UPROPERTY(EditAnywhere)
 	FVector direction;
 
+	
 };
