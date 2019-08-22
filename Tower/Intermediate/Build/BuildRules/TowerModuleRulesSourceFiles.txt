@@ -1,3 +1,0 @@
-D:\GitHub\TowerDefence\TowerDefence\Tower\Source\Tower\Tower.Build.cs
-D:\GitHub\TowerDefence\TowerDefence\Tower\Source\Tower.Target.cs
-D:\GitHub\TowerDefence\TowerDefence\Tower\Source\TowerEditor.Target.cs
