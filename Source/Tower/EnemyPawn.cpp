@@ -1,11 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "EnemyPawn.h"
 
-#include "TowerPawn.h"
-#include "Engine/World.h"
-
-// Sets default values
-ATowerPawn::ATowerPawn()
+AEnemyPawn::AEnemyPawn()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -31,14 +28,14 @@ ATowerPawn::ATowerPawn()
 }
 
 // Called when the game starts or when spawned
-void ATowerPawn::BeginPlay()
+void AEnemyPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
 }
 
 // Called every frame
-void ATowerPawn::Tick(float DeltaTime)
+void AEnemyPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
@@ -82,22 +79,22 @@ void ATowerPawn::Tick(float DeltaTime)
 
 
 // Called to bind functionality to input
-void ATowerPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void AEnemyPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	//PlayerInputComponent->BindAxis("TowerMoveRight", this, &ATowerPawn::MoveRight);
 
-	PlayerInputComponent->BindAction("Grow", IE_Pressed, this, &ATowerPawn::StartGrowing);
-	PlayerInputComponent->BindAction("Grow", IE_Released, this, &ATowerPawn::StopGrowing);
+	PlayerInputComponent->BindAction("Grow", IE_Pressed, this, &AEnemyPawn::StartGrowing);
+	PlayerInputComponent->BindAction("Grow", IE_Released, this, &AEnemyPawn::StopGrowing);
 
 	// Respond every frame to the values of our two movement axes, "MoveX" and "MoveY".
-	PlayerInputComponent->BindAxis("MoveY", this, &ATowerPawn::Move_YAxis);
-	PlayerInputComponent->BindAxis("MoveX", this, &ATowerPawn::Move_XAxis);
-	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &ATowerPawn::SpawnBullets);
+	PlayerInputComponent->BindAxis("MoveY", this, &AEnemyPawn::Move_YAxis);
+	PlayerInputComponent->BindAxis("MoveX", this, &AEnemyPawn::Move_XAxis);
+	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &AEnemyPawn::SpawnBullets);
 }
 
 //Called to move the actor to the right
-void ATowerPawn::MoveRight(float val)
+void AEnemyPawn::MoveRight(float val)
 {
 
 	//Save movement to value
@@ -110,56 +107,55 @@ void ATowerPawn::MoveRight(float val)
 	}
 }
 
- UPawnMovementComponent* ATowerPawn::GetMovementComponent() const {
-	 return MovementComponent;
- }
+UPawnMovementComponent* AEnemyPawn::GetMovementComponent() const {
+	return MovementComponent;
+}
 
- void ATowerPawn::Move_XAxis(float AxisValue)
- {
-	 // Move at 100 units per second forward or backward
-	 CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
- }
+void AEnemyPawn::Move_XAxis(float AxisValue)
+{
+	// Move at 100 units per second forward or backward
+	CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+}
 
- void ATowerPawn::Move_YAxis(float AxisValue)
- {
-	 // Move at 100 units per second right or left
-	 CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
- }
+void AEnemyPawn::Move_YAxis(float AxisValue)
+{
+	// Move at 100 units per second right or left
+	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+}
 
- void ATowerPawn::StartGrowing()
- {
-	 bGrowing = true;
- }
+void AEnemyPawn::StartGrowing()
+{
+	bGrowing = true;
+}
 
- void ATowerPawn::StopGrowing()
- {
-	 bGrowing = false;
- }
+void AEnemyPawn::StopGrowing()
+{
+	bGrowing = false;
+}
 
- void ATowerPawn::SpawnBullets()
+void AEnemyPawn::SpawnBullets()
+{
+	// null check
+	if (BulletBP != NULL)
+	{
+		const UWorld* world = this->GetWorld();
 
- {
-	 // null check
-	 if (BulletBP != NULL)
-	 {
-		 const UWorld* world = this->GetWorld();
+		if (world)
+		{
+			FActorSpawnParameters sparams;
+			sparams.Owner = this;
+			sparams.Instigator = this;
 
-		 if (world)
-		 {
-			 FActorSpawnParameters sparams;
-			 sparams.Owner = this;
-			 sparams.Instigator = this;
+			// get socket location and rotation
+			TArray<FName> sockets = body->GetAllSocketNames();
 
-			 // get socket location and rotation
-			 TArray<FName> sockets = body->GetAllSocketNames();
+			if (sockets[0] == TEXT("BulletSocket"))
+			{
+				FVector SocketLocation = body->GetSocketLocation(sockets[0]);
+				FRotator SocketRotation = body->GetSocketRotation(sockets[0]);
 
-			 if (sockets[0] == TEXT("BulletSocket"))
-			 {
-				 FVector SocketLocation = body->GetSocketLocation(sockets[0]);
-				 FRotator SocketRotation = body->GetSocketRotation(sockets[0]);
-
-				 ABulletActor *bullet = GetWorld()->SpawnActor<ABulletActor>(BulletBP, SocketLocation, SocketRotation, sparams);
-			 }
-		 }
-	 }
- }
+				ABulletActor *bullet = GetWorld()->SpawnActor<ABulletActor>(BulletBP, SocketLocation, SocketRotation, sparams);
+			}
+		}
+	}
+}

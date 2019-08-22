@@ -10,19 +10,18 @@
 #include "TowerMovementComponent.h"
 #include "BulletActor.h"
 #include "Components/InputComponent.h"
-#include "TowerPawn.generated.h"
+#include "EnemyPawn.generated.h"
 
 UCLASS()
-class TOWER_API ATowerPawn : public APawn
+class TOWER_API AEnemyPawn : public APawn
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this pawn's properties
-	ATowerPawn();
+	AEnemyPawn();
 
 protected:
-	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -44,7 +43,7 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+
 	// Main body static mesh of the tower
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UStaticMeshComponent* body;
@@ -78,4 +77,5 @@ public:
 	//Input variables
 	FVector CurrentVelocity;
 	bool bGrowing;
+
 };
