@@ -8,7 +8,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "TowerMovementComponent.h"
-#include "BulletActor.h"
+#include "Bullet.h"
 #include "Components/InputComponent.h"
 #include "Components/BoxComponent.h"
 #include "TowerPawn.generated.h"
@@ -37,7 +37,7 @@ protected:
 
 	// archetype bullet blueprint class
 	UPROPERTY(Category = "Bullet", EditAnywhere, BlueprintReadOnly)
-		TSubclassOf<ABulletActor> BulletBP;
+		TSubclassOf<ABullet> BulletBP;
 
 public:	
 	// Called every frame

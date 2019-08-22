@@ -27,7 +27,7 @@ protected:
 
 	// Speed of the bullet
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		float Speed = 15;
+		float Speed = 500;
 
 	// Directional Vector
 	FVector Direction;

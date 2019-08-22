@@ -171,7 +171,7 @@ void ATowerPawn::MoveRight(float val)
 				 FVector SocketLocation = body->GetSocketLocation(sockets[0]);
 				 FRotator SocketRotation = body->GetSocketRotation(sockets[0]);
 
-				 ABulletActor *bullet = GetWorld()->SpawnActor<ABulletActor>(BulletBP, SocketLocation, SocketRotation, sparams);
+				 ABullet *bullet = GetWorld()->SpawnActor<ABullet>(BulletBP, SocketLocation, SocketRotation, sparams);
 			 }
 		 }
 	 }
@@ -181,18 +181,18 @@ void ATowerPawn::MoveRight(float val)
  {
 	 UE_LOG(LogTemp, Warning, TEXT("Overlap!"));
 
-	 if (OtherActor->IsA(ABulletActor::StaticClass()))
+	 if (OtherActor->IsA(ABullet::StaticClass()))
 	 {
 		 // cast the other actor to bullet
-		 ABulletActor* bullet = Cast<ABulletActor>(OtherActor);
+		 ABullet* bullet = Cast<ABullet>(OtherActor);
 
 		 AActor* instigator = bullet->GetInstigator();
 
-		 if (instigator && instigator->GetName().Equals(this->GetName()))
+		 if (instigator && !instigator->GetName().Equals(this->GetName()))
 		 {
 			 // Destroy the tank
-			 //this->Destroy();
-			 //bullet->Destroy();
+			 this->Destroy();
+			 bullet->Destroy();
 		 }
 	 }
 		
