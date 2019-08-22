@@ -12,8 +12,8 @@ UCLASS()
 class TOWER_API ABulletActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ABulletActor();
 
@@ -39,7 +39,7 @@ protected:
 	void distanceCheck();
 
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
