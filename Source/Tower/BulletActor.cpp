@@ -12,12 +12,23 @@ ABulletActor::ABulletActor()
 	body = CreateDefaultSubobject<UStaticMeshComponent>("body");
 	this->RootComponent = body;
 
+	// Collision component
+	collisionComponent = CreateDefaultSubobject<USphereComponent>("bullet collision");
+	collisionComponent->SetSphereRadius(4);
+	collisionComponent->SetupAttachment(body);
+	collisionComponent->SetGenerateOverlapEvents(true);
+
+	isActive = false;
+	poolLocation = GetActorLocation();
+
+
 }
 
 // Called when the game starts or when spawned
 void ABulletActor::BeginPlay()
 {
 	Super::BeginPlay();
+	activeSpeed = Speed;
 	
 }
 
@@ -25,6 +36,38 @@ void ABulletActor::BeginPlay()
 void ABulletActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (isActive == true)
+		move();
+
+	distanceCheck();
 
 }
+
+void ABulletActor::move()
+{
+	FVector pos = GetActorLocation();
+	SetActorRelativeLocation((direction * Speed) + pos);
+}
+
+void ABulletActor::distanceCheck()
+{
+	if (FVector::Dist(GetActorLocation(), fireOrigin) > fireDistance)
+		resetToPool();
+}
+
+void ABulletActor::resetToPool()
+{
+	isActive = false;
+	Speed = 0;
+	SetActorLocation(poolLocation);
+}
+
+void ABulletActor::fire(FVector _direction, FVector _origin)
+{
+	direction = _direction;
+	fireOrigin = _origin;
+	Speed = activeSpeed;
+	isActive = true;
+}
+
 

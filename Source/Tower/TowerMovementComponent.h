@@ -21,4 +21,14 @@ class TOWER_API UTowerMovementComponent : public UPawnMovementComponent
 		FActorComponentTickFunction *ThisTickFunction
 	) override;
 	
+public:
+	float DirectionalSpeed = 200.0f;
+	float Angularspeed = 5.0f;
+
+public:
+	void AddTurnVector(float add);
+	float ComsumeTurnVector();
+
+protected:
+	float turn;
 };

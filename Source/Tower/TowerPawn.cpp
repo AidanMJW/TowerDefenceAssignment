@@ -27,6 +27,14 @@ ATowerPawn::ATowerPawn()
 
 	MovementComponent = CreateDefaultSubobject<UTowerMovementComponent>("movementcomponent");
 	MovementComponent->UpdatedComponent = RootComponent;
+	//MovementComponent->DirectionalSpeed = this->MovementSpeed;
+
+	collisionComponent = CreateDefaultSubobject<UBoxComponent>("collision component");
+	collisionComponent->SetBoxExtent(FVector(10, 10, 10));
+
+	collisionComponent->SetGenerateOverlapEvents(true);
+	collisionComponent->SetupAttachment(body);
+	collisionComponent->OnComponentBeginOverlap.AddDynamic(this, &ATowerPawn::OnComponentBeginOverlap);
 
 }
 
@@ -34,6 +42,11 @@ ATowerPawn::ATowerPawn()
 void ATowerPawn::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FVector orgin;
+	FVector boxExtent;
+	this->GetActorBounds(true, orgin, boxExtent);
+	collisionComponent->SetBoxExtent(boxExtent);
 
 }
 
@@ -163,3 +176,24 @@ void ATowerPawn::MoveRight(float val)
 		 }
 	 }
  }
+
+ void ATowerPawn::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+ {
+	 UE_LOG(LogTemp, Warning, TEXT("Overlap!"));
+
+	 if (OtherActor->IsA(ABulletActor::StaticClass()))
+	 {
+		 // cast the other actor to bullet
+		 ABulletActor* bullet = Cast<ABulletActor>(OtherActor);
+
+		 AActor* instigator = bullet->GetInstigator();
+
+		 if (instigator && instigator->GetName().Equals(this->GetName()))
+		 {
+			 // Destroy the tank
+			 //this->Destroy();
+			 //bullet->Destroy();
+		 }
+	 }
+		
+}

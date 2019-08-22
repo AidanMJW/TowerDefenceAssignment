@@ -10,6 +10,7 @@
 #include "TowerMovementComponent.h"
 #include "BulletActor.h"
 #include "Components/InputComponent.h"
+#include "Components/BoxComponent.h"
 #include "TowerPawn.generated.h"
 
 UCLASS()
@@ -57,6 +58,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UCameraComponent* camera;
 
+	// Box component
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UBoxComponent* collisionComponent;
+
 	// Speed of movement
 	UPROPERTY(Category = "Speed", EditAnywhere, BlueprintReadWrite)
 		float MovementSpeed = 200.0f;
@@ -78,4 +83,7 @@ public:
 	//Input variables
 	FVector CurrentVelocity;
 	bool bGrowing;
+
+	UFUNCTION()
+		void OnComponentBeginOverlap (UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
 };
